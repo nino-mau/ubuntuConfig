@@ -3,6 +3,9 @@
 # Navigate to your repository
 cd ~/Documents/dev/backups/ubuntuConfig/. || exit
 
+# Sync file
+./sync.sh
+
 # Check for changes
 if git diff --exit-code --quiet && git diff --cached --exit-code --quiet; then
   echo "No changes to commit."
