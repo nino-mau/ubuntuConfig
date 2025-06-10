@@ -21,4 +21,4 @@ git add .
 git commit -m "Automated commit on $(date)"
 
 # Push changes
-git push origin main
+git push origin homeDekstop
