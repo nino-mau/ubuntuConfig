@@ -20,7 +20,9 @@ alias cdproj="cd ~/Documents/dev/projects" # go to project folder
 
 alias cddwl="cd ~/Downloads" # go to download folder
 
-alias cdTmp="cd ~/Documents/tmp" # go to tmp folder
+alias cddoc="cd ~/Documents" # go to download folder
+
+alias cdtmp="cd ~/tmp" # go to tmp folder
 
 ##
 ## PROJECTS
@@ -42,9 +44,9 @@ alias rconfig="source ~/.config/fish/config.fish" # Reload fish config file
 ## VPS
 ##
 
-alias cvps="TERM=xterm ssh nino@164.92.184.136" # Connect to digital ocean droplet
+alias cvps="ssh nino@165.22.76.208" # Connect to digital ocean droplet
 
-alias crootvps="TERM=xterm ssh root@164.92.184.136" # Connect to digital ocean droplet as root
+alias crootvps="ssh root@165.22.76.208" # Connect to digital ocean droplet as root
 
 ##
 ## XAMPP/LAMP
