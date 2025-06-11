@@ -2,6 +2,9 @@
 
 oh-my-posh init fish --config $HOME/.poshthemes/star.omp.json | source
 
+# Set up fzf key bindings
+fzf --fish | source
+
 ##
 ## PATH
 ##
