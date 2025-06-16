@@ -158,6 +158,19 @@ alias fd="fdfind"
 
 alias restart="exec $SHELL"
 
+# Copy file content to clip board
+function cpf --description 'Copy file content to clipboard'
+    if test -z "$argv"
+        echo "Usage: cpf <file>"
+        return 1
+    end
+    set file $argv[1]
+    if not test -r "$file"
+        echo "Error: Cannot read '$file'"
+        return 1
+    end
+    cat "$file" | fish_clipboard_copy
+end
 
 # Find a directory
 function finddir
@@ -187,6 +200,6 @@ end
 # pnpm
 set -gx PNPM_HOME "~/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
