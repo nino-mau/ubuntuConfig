@@ -79,6 +79,8 @@ end
 ## NEOVIM
 ##
 
+alias vi="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
+
 alias lvim="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
 
 alias astrovim="NVIM_APPNAME=astrovim nvim" # Open nvim using the astrovim config version
@@ -163,6 +165,24 @@ end
 alias fd="fdfind"
 
 alias restart="exec $SHELL"
+
+# Copy file content to clip board
+function cpf --description 'Copy file content to clipboard'
+    if test -z "$argv"
+        echo "Usage: cpf <file>"
+        return 1
+    end
+
+    set file $argv[1]
+
+    if not test -r "$file"
+        echo "Error: Cannot read '$file'"
+        return 1
+    end
+
+    cat "$file" | fish_clipboard_copy
+end
+
 
 
 # Find a directory
