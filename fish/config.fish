@@ -150,6 +150,53 @@ function startgv
     wezterm cli spawn --cwd ~/Documents/GamesMatch/server -- nodemon app.js
 end
 
+# Start arcgic experience builder
+function startexb
+    # Get current tab id
+    set current_tab_id (wezterm cli get-tab-id)
+
+    # Start server in a new tab
+    set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/server)
+    echo "pnpm start" | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Start client
+    set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client)
+    echo "pnpm start" | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Start neovim
+    #set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client/your-extensions/widgets)
+    #echo "lvim ." | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Go back to first tab and start neovim
+    wezterm cli activate-tab --tab-id $current_tab_id
+    cd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client/your-extensions/widgets
+    lvim .
+end
+
+# Start tp1 in arcgic experience builder
+function startexbtp
+    # Get current tab id
+    set current_tab_id (wezterm cli get-tab-id)
+
+    # Start server in a new tab
+    set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/server)
+    echo "pnpm start" | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Start client
+    set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client)
+    echo "pnpm start" | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Start neovim
+    #set pane_id (wezterm cli spawn --cwd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client/your-extensions/widgets/gestion-patrimoine)
+    #echo "lvim ." | wezterm cli send-text --no-paste --pane-id $pane_id
+
+    # Go back to first tab and start neovim
+    wezterm cli activate-tab --tab-id $current_tab_id
+    cd ~/Documents/dev/tp-exb/ArcGISExperienceBuilder/client/your-extensions/widgets/gestion-patrimoine
+    lvim .
+end
+
+
 ##
 ## UTILS
 ##
@@ -158,19 +205,16 @@ alias fd="fdfind"
 
 alias restart="exec $SHELL"
 
-# Copy file content to clip board
-function cpf --description 'Copy file content to clipboard'
-    if test -z "$argv"
-        echo "Usage: cpf <file>"
-        return 1
-    end
-    set file $argv[1]
-    if not test -r "$file"
-        echo "Error: Cannot read '$file'"
-        return 1
-    end
-    cat "$file" | fish_clipboard_copy
+alias wezterm="flatpak run org.wezfurlong.wezterm"
+
+# Lazy commit
+function lcommit
+    set -l messages "Update" "Fix" "Change" "Refactor" "Tweak" "Cleanup" "Adjust" "Improve" "Polish" "Quick fix"
+    set -l msg (random choice $messages)
+    git add .
+    git commit -m "$msg"
 end
+
 
 # Find a directory
 function finddir
@@ -197,9 +241,24 @@ function mkcd
     end
 end
 
+# Copy file content to clipboard
+function cpb
+    if test (count $argv) -ne 1
+        echo "Usage: cpb <file>"
+        return 1
+    end
+
+    if not test -f $argv[1]
+        echo "cpb: File '$argv[1]' not found."
+        return 1
+    end
+
+    xclip -selection clipboard < $argv[1]
+end
+
 # pnpm
 set -gx PNPM_HOME "~/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
