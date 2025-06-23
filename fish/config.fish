@@ -183,18 +183,6 @@ function cpf --description 'Copy file content to clipboard'
     cat "$file" | fish_clipboard_copy
 end
 
-
-
-# Find a directory
-function finddir
-    sudo find . -type d -name "$argv"
-end
-
-# Find a file
-function findfile
-    sudo find . -type f -name "$argv"
-end
-
 # Execute nano with root perm
 function rnano
     sudo nano $argv
