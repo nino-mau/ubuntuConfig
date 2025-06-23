@@ -204,3 +204,5 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+set -x SSH_ASKPASS /usr/bin/ksshaskpass
+set -x SSH_ASKPASS_REQUIRE prefer
