@@ -47,9 +47,9 @@ alias rconfig="source ~/.config/fish/config.fish" # Reload fish config file
 ## VPS
 ##
 
-alias cvps="ssh nino@165.22.76.208" # Connect to digital ocean droplet
+alias cvps="ssh ubuntu@51.75.123.189" # Connect to digital ocean droplet
 
-alias crootvps="ssh root@165.22.76.208" # Connect to digital ocean droplet as root
+alias crootvps="ssh root@51.75.123.189" # Connect to digital ocean droplet as root
 
 ##
 ## XAMPP/LAMP
