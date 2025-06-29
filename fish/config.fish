@@ -39,9 +39,15 @@ alias lvgv="lvim ~/Documents/dev/projects/Gameverse" # Open gamverse projects in
 ## FISH
 ##
 
-alias fconfig="kate $HOME/.config/fish/config.fish" # Open fish config file in kate
+alias fconfig="lvim ~/.config/fish/config.fish" # Open fish config file in kate
 
 alias rconfig="source ~/.config/fish/config.fish" # Reload fish config file
+
+##
+## GITHUB CLI
+##
+
+alias copilot="gh copilot"
 
 ##
 ## VPS
@@ -119,7 +125,9 @@ alias logdock="docker compose exec app tail /var/www/storage/logs/laravel.log" #
 ## LS
 ##
 
-alias ls="lsd -r" # Execute custom ls
+alias ls="lsd -t --reverse"
+
+alias lss="lsd -l -t --reverse --blocks=name" # Execute custom ls
 
 alias lsp="lsd --blocks=user,group,permission,name" # Execute custom ls
 
@@ -129,9 +137,13 @@ alias lsl="lsd -latr --blocks=date,user,group,permission,name" # Execute custom 
 ## GENERAL
 ##
 
-alias fkitty="kate ~/.config/kitty/kitty.conf" # Open kitty terminal conf file
+alias fkitty="lvim ~/.config/kitty/kitty.conf" # Open kitty terminal conf file
 
-alias fwez="kate ~/.config/wezterm/wezterm.lua" # Open wezterm terminal conf file
+alias fwez="lvim ~/.config/wezterm/wezterm.lua" # Open wezterm terminal conf file
+
+alias fghost="lvim ~/.config/ghostty/config" # Open ghostty terminal conf file
+
+alias rghost="source ~/.config/ghostty/config" # Reload ghostty terminal conf file
 
 alias phpini="sudo nano /etc/php/8.3/cli/php.ini" # Open the php.ini file used by system
 
@@ -204,5 +216,7 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# Set up kwallet to remember ssh keys
 set -x SSH_ASKPASS /usr/bin/ksshaskpass
 set -x SSH_ASKPASS_REQUIRE prefer

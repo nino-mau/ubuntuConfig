@@ -1,9 +1,8 @@
-
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 local config = {}
 
--- === FONT === 
+-- === FONT ===
 
 config.font = wezterm.font("GeistMonoNerdFont")
 -- config.font = wezterm.font("IosevkaNerdFont")
@@ -18,15 +17,15 @@ config.font_size = 11
 -- === WINDOW ===
 
 -- Window size
-config.initial_cols = 120 
-config.initial_rows = 29  
+config.initial_cols = 120
+config.initial_rows = 29
 
 -- Background
 config.window_background_opacity = 0.5
 
 -- === COLOR SHCEME ===
 
-config.color_scheme = 'rose-pine' 
+config.color_scheme = "rose-pine"
 
 -- === PLUGINS ===
 
