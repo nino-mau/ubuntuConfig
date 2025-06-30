@@ -55,7 +55,7 @@ window-height = 35
 # window-decoration = "none"
 
 # Font configuration
-font-family = GeistMonoNerdFont
+font-family = SourceCodePro
 font-size = 11
 
 # Line height equivalent
@@ -70,16 +70,15 @@ background-blur-radius = 10
 
 # Keybinds
 keybind = ctrl+shift+s=close_surface
-keybind = ²=esc:
+keybind = CapsLock=esc:
 
-# Color theme
 # theme = Atom
 # theme = jubi
 # theme = rose-pine
-# theme = catppuccin-macchiato
-# theme = catppuccin-latte
-# theme = catppuccin-frappe
-theme = catppuccin-mocha
+theme = catppuccin-macchiato.conf
+# theme = catppuccin-latte.conf
+# theme = catppuccin-frappe.conf
+# theme = catppuccin-mocha.conf
 
 # Change cursor style
 shell-integration-features = no-cursor 

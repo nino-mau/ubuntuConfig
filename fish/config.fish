@@ -1,5 +1,3 @@
-# Set oh my posh theme, change the omp.json part to change theme
-
 oh-my-posh init fish --config $HOME/.poshthemes/star.omp.json | source
 
 # Set up fzf key bindings
@@ -85,9 +83,9 @@ end
 ## NEOVIM
 ##
 
-alias vi="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
+alias vi="NVIM_APPNAME=lazyvim nvim"
 
-alias lvim="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
+alias lvim="NVIM_APPNAME=lazyvim nvim"
 
 alias astrovim="NVIM_APPNAME=astrovim nvim" # Open nvim using the astrovim config version
 
@@ -101,14 +99,14 @@ alias nvconf="nvim ~/.config/nvim" # Open default nvim config in nvim
 ## NGINX
 ##
 
-alias rnginx="sudo systemctl restart nginx" # Reload nginx 
+alias rnginx="sudo systemctl restart nginx" # Reload nginx
 
 ##
 ## DOCKER
 ##
 
-alias rdock="docker compose up -d" # start docker 
- 
+alias rdock="docker compose up -d" # start docker
+
 alias builddock="docker compose up -d --build" # rebuild docker
 
 alias sdock="docker compose down" # stop docker
@@ -174,7 +172,7 @@ end
 ## UTILS
 ##
 
-alias fd="fdfind"
+# alias fd="fdfind"
 
 alias restart="exec $SHELL"
 
@@ -210,13 +208,14 @@ function mkcd
     end
 end
 
-# pnpm
-set -gx PNPM_HOME "/home/nino/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
 # Set up kwallet to remember ssh keys
 set -x SSH_ASKPASS /usr/bin/ksshaskpass
 set -x SSH_ASKPASS_REQUIRE prefer
+
+# fnm setup for Fish
+set -gx PATH $HOME/.local/share/fnm $PATH
+
+# only try to source if fnm exists
+if type -q fnm
+    fnm env --use-on-cd | source
+end
