@@ -1,9 +1,17 @@
-# Set oh my posh theme, change the omp.json part to change theme
-
 oh-my-posh init fish --config $HOME/.poshthemes/star.omp.json | source
 
 # Set up fzf key bindings
 fzf --fish | source
+
+# Set up fnm
+fnm env --use-on-cd | source
+
+# Switch to vim binding mode
+fish_vi_key_bindings
+
+# Set up kwallet to remember ssh keys
+set -x SSH_ASKPASS /usr/bin/ksshaskpass
+set -x SSH_ASKPASS_REQUIRE prefer
 
 ##
 ## PATH
@@ -15,7 +23,7 @@ alias cdconf="cd ~/.config" # Open .config folder
 
 alias cddev="cd ~/Documents/dev" # Open dev folder
 
-alias cdgv="cd ~/Documents/dev/projects/Gameverse" # Open gameverse project
+alias cdgv="cd ~/Documents/dev/projects/gameverse" # Open gameverse project
 
 alias cdpy="cd ~/Documents/dev/python" # go to python dir
 
@@ -31,9 +39,9 @@ alias cdtmp="cd ~/tmp" # go to tmp folder
 ## PROJECTS
 ##
 
-alias nvgv="nvim ~/Documents/dev/projects/Gameverse" # Open gamverse projects in nvim
+alias nvgv="nvim ~/Documents/dev/projects/gameverse" # Open gamverse projects in nvim
 
-alias lvgv="lvim ~/Documents/dev/projects/Gameverse" # Open gamverse projects in lazyvim
+alias lvgv="lvim ~/Documents/dev/projects/gameverse" # Open gamverse projects in lazyvim
 
 ##
 ## FISH
@@ -85,9 +93,9 @@ end
 ## NEOVIM
 ##
 
-alias vi="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
+alias vi="NVIM_APPNAME=lazyvim nvim"
 
-alias lvim="NVIM_APPNAME=lazyvim /usr/local/bin/nvim"
+alias lvim="NVIM_APPNAME=lazyvim nvim"
 
 alias astrovim="NVIM_APPNAME=astrovim nvim" # Open nvim using the astrovim config version
 
@@ -101,14 +109,14 @@ alias nvconf="nvim ~/.config/nvim" # Open default nvim config in nvim
 ## NGINX
 ##
 
-alias rnginx="sudo systemctl restart nginx" # Reload nginx 
+alias rnginx="sudo systemctl restart nginx" # Reload nginx
 
 ##
 ## DOCKER
 ##
 
-alias rdock="docker compose up -d" # start docker 
- 
+alias rdock="docker compose up -d" # start docker
+
 alias builddock="docker compose up -d --build" # rebuild docker
 
 alias sdock="docker compose down" # stop docker
@@ -174,7 +182,7 @@ end
 ## UTILS
 ##
 
-alias fd="fdfind"
+# alias fd="fdfind"
 
 alias restart="exec $SHELL"
 
@@ -209,14 +217,3 @@ function mkcd
         echo "Usage: mkcd <directory>"
     end
 end
-
-# pnpm
-set -gx PNPM_HOME "/home/nino/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# Set up kwallet to remember ssh keys
-set -x SSH_ASKPASS /usr/bin/ksshaskpass
-set -x SSH_ASKPASS_REQUIRE prefer
