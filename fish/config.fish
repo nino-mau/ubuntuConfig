@@ -97,6 +97,8 @@ alias vi="NVIM_APPNAME=lazyvim nvim"
 
 alias lvim="NVIM_APPNAME=lazyvim nvim"
 
+alias cvim="NVIM_APPNAME=nvchad nvim"
+
 alias astrovim="NVIM_APPNAME=astrovim nvim" # Open nvim using the astrovim config version
 
 # alias lvim="NVIM_APPNAME=lazyvim nvim" # Open nvim using the lazy vim config version
@@ -104,6 +106,16 @@ alias astrovim="NVIM_APPNAME=astrovim nvim" # Open nvim using the astrovim confi
 alias lvconf="lvim ~/.config/lazyvim" # Open default lazyvim config in lazyvim
 
 alias nvconf="nvim ~/.config/nvim" # Open default nvim config in nvim
+
+# Execute lvim with root perm
+function rlvim
+    sudo NVIM_APPNAME=lazyvim nvim $argv
+end
+
+# Execute nvchad with root perm
+function rcvim
+    sudo NVIM_APPNAME=nvchad nvim $argv
+end
 
 ##
 ## NGINX
